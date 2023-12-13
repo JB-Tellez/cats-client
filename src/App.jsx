@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cats from './Cats';
-import CreateCat from './CreateCat'; // new
+import CreateCat from './CreateCat';
+import UpdateCat from './UpdateCat';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Container from 'react-bootstrap/Container'
@@ -64,6 +65,18 @@ function App() {
     }
   }
 
+  async function handleCatUpdate(catToUpdate) {
+    const url = `${API_URL}/${catToUpdate._id}`;
+
+    try {
+      await axios.put(url, catToUpdate);
+      const updatedCats = cats.map(cat => cat._id === catToUpdate._id ? catToUpdate : cat);
+      setCats(updatedCats);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Container>
       <BrowserRouter>
@@ -76,7 +89,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={
             <div>
-              <Cats cats={cats} onDelete={handleDelete} />
+              <Cats cats={cats} onDelete={handleDelete} onUpdate={handleCatUpdate} />
               <h2>Filter by location</h2>
               <form onSubmit={handleLocationSubmit}>
                 <input name="location" />
