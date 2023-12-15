@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cats from './Cats';
-import CreateCat from './CreateCat';
-import UpdateCat from './UpdateCat';
+import CreateCatForm from './CreateCatForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Container from 'react-bootstrap/Container'
@@ -103,7 +102,7 @@ function App() {
             <h1>About Page Here</h1>
           } />
           <Route path="/create" element={
-            <CreateCat onCreate={handleCatCreate} />
+            <CreateCatForm onCreate={handleCatCreate} />
           } />
         </Routes>
       </BrowserRouter>

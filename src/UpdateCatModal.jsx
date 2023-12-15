@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Modal from 'react-bootstrap/Modal';
-import UpdateCat from './UpdateCat';
+import UpdateCatForm from './UpdateCatForm';
 
 export default function UpdateCatModal({ onUpdate, cat, onClose, show }) {
   return (
@@ -9,7 +9,7 @@ export default function UpdateCatModal({ onUpdate, cat, onClose, show }) {
           <Modal.Title>Update {cat.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <UpdateCat onUpdate={onUpdate} cat={cat} />
+          <UpdateCatForm onUpdate={onUpdate} cat={cat} />
         </Modal.Body>
       </Modal>
   );

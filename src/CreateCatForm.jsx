@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function CreateCat({ onCreate }) {
+export default function CreateCatForm({ onCreate }) {
 
   const navigate = useNavigate();
 
@@ -15,7 +16,6 @@ export default function CreateCat({ onCreate }) {
       hasClaws: event.target.formClawsCheckbox.checked,
     })
     navigate('/');
-
   }
 
   return (

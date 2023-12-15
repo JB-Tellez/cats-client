@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
-export default function UpdateCat({ onUpdate, cat }) {
+export default function UpdateCatForm({ onUpdate, cat }) {
 
   const [name, setName] = useState(cat.name);
   const [color, setColor] = useState(cat.color);
