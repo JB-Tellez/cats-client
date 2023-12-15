@@ -17,7 +17,7 @@ const API_URL = `${SERVER}/cats`;
 
 
 function App() {
-  const [cats, setCats] = useState([]);
+  const [cats, setCats] = useState(null);
 
   useEffect(() => {
     fetchCats();
@@ -53,7 +53,7 @@ function App() {
   }
 
   async function handleDelete(catToDelete) {
-    const url = `${API_URL}/${catToDelete._id}`;
+    const url = `${API_URL}/${catToDelete}`;
 
     try {
       await axios.delete(url);

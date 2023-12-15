@@ -45,7 +45,7 @@ function Cat({ info, onDelete, onUpdate }) {
       <span onClick={handleEditClick}>[E]</span> 
       <span onClick={deleteCat}>[X]</span>
       </h3>
-      <UpdateCatModal show={showModal} cat={info} onClose={handleClose} onUpdate={handleUpdate}/>
+      <UpdateCatModal show={showModal} cat={info} onClose={handleClose} handleUpdate={handleUpdate}/>
     </>
   );
 }
