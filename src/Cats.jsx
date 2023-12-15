@@ -2,16 +2,18 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import { useState } from 'react';
 import UpdateCatModal from './UpdateCatModal';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 function Cats({ cats, onDelete, onUpdate }) {
   return (
-    <ListGroup>
-      {cats.map(cat => (
-        <ListGroup.Item key={cat._id} >
+    <Accordion>
+      {cats.map((cat, index) => (
+        <Accordion.Item key={cat._id} eventKey={index} >
           <Cat info={cat} onDelete={onDelete} onUpdate={onUpdate} />
-        </ListGroup.Item>
+        </Accordion.Item>
       ))}
-    </ListGroup>
+    </Accordion>
   )
 }
 
@@ -36,16 +38,17 @@ function Cat({ info, onDelete, onUpdate }) {
     onUpdate(catToUpdate);
   }
 
-
   return (
     <>
-    <h3>
-      {info.name} 
-      ({info.location})
-      <span onClick={handleEditClick}>[E]</span> 
-      <span onClick={deleteCat}>[X]</span>
-      </h3>
-      <UpdateCatModal show={showModal} cat={info} onClose={handleClose} onUpdate={handleUpdate}/>
+      <Accordion.Header>
+        {info.name}
+      </Accordion.Header>
+      <Accordion.Body>
+        {info.location}
+        <span onClick={handleEditClick}>[E]</span>
+        <span onClick={deleteCat}>[X]</span>
+        <UpdateCatModal show={showModal} cat={info} onClose={handleClose} onUpdate={handleUpdate} />
+      </Accordion.Body>
     </>
   );
 }
