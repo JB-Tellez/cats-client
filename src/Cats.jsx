@@ -17,30 +17,35 @@ function Cats({ cats, onDelete, onUpdate }) {
 
 function Cat({ info, onDelete, onUpdate }) {
 
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   function deleteCat() {
     onDelete(info);
   }
 
-  function updateCat(updatedCat) {
-
-    onUpdate(updatedCat);
-    setShow(false);
-  }
-
-  function showUpdate() {
-    setShow(true);
+  function handleEditClick() {
+    setShowModal(true);
   }
 
   function handleClose() {
-    setShow(false);
+    setShowModal(false);
   }
+
+  function handleUpdate(catToUpdate) {
+    setShowModal(false);
+    onUpdate(catToUpdate);
+  }
+
 
   return (
     <>
-    <h3>{info.name} ({info.location})<span onClick={showUpdate}>[E]</span> <span onClick={deleteCat}>[X]</span></h3>
-    <UpdateCatModal onUpdate={updateCat} cat={info} show={show} onClose={handleClose} />
+    <h3>
+      {info.name} 
+      ({info.location})
+      <span onClick={handleEditClick}>[E]</span> 
+      <span onClick={deleteCat}>[X]</span>
+      </h3>
+      <UpdateCatModal show={showModal} cat={info} onClose={handleClose} onUpdate={handleUpdate}/>
     </>
   );
 }

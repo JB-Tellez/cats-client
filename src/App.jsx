@@ -66,6 +66,7 @@ function App() {
   }
 
   async function handleCatUpdate(catToUpdate) {
+
     const url = `${API_URL}/${catToUpdate._id}`;
 
     try {

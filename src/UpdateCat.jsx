@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function UpdateCat({ onUpdate, cat }) {
@@ -10,9 +9,9 @@ export default function UpdateCat({ onUpdate, cat }) {
   const [color, setColor] = useState(cat.color);
   const [location, setLocation] = useState(cat.location);
   const [hasClaws, setHasClaws] = useState(cat.hasClaws);
-  const _id = cat._id;
   
-  const navigate = useNavigate();
+  const _id = cat._id;
+
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +22,6 @@ export default function UpdateCat({ onUpdate, cat }) {
       hasClaws,
       _id,
     });
-    navigate('/');
   }
 
   function handleChange(event) {
